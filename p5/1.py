@@ -14,7 +14,7 @@ def show_menu():
 
 def load_data_from_database():
     print('loading...')
-    f=open('D:\ترم5\آز سیستم عامل\سری 5\data.csv','r')
+    f=open('/home/sara-gh/Desktop/python/data.csv','r')
     text=f.read()
     
     rows=text.split('\n')
@@ -25,14 +25,10 @@ def load_data_from_database():
         products.append(new_dict)
     print('load complete.')
     
-     
-    
 def add():
-    print("please insert recoed in this format :' id','name','price','count'")
-    s = input('--> ')
-    s = s.split(',')
-    newLine={'id':s[0],'name':s[1],'price':s[2],'count':s[3]}
-    products.append(newLine)
+    record_str = input("Insert a record(id, #name, price, count): ")
+    record_str_split =  record_str.split(',')
+    products.append({'id':record_str_split[0],'name':record_str_split[1],'price':record_str_split[2],'count':record_str_split[3]})
     
 def edit():
     s = input('please insert recoed id that you want to edit: ')
@@ -58,7 +54,6 @@ def delete():
     print("not found")
     
 def show_list():
-    
     for product in products:
         print(product)
     
@@ -81,11 +76,19 @@ def buy():
             old = int(product['count'])
             how = int(input("How much: "))
             new = old - how
-            product['count'] = str(new)
-            print('The purchase was made\n')
+            if(new<0):
+                print('The desired number is more than the inventory!!!\n')
+            else:
+                product['count'] = str(new)
+                print('The purchase was made\n')
             return
 
     print("not found")
+
+def savaFile():
+    f=open('/home/sara-gh/Desktop/python/data.csv','w')
+    for x in products:
+        f.write('%s,%s,%s,%s\n' %(x['id'], x['name'], str(x['price']), str(x['count']))) 
 
 load_data_from_database()
 while(True):
@@ -104,4 +107,5 @@ while(True):
     elif choice==6:
         buy()  
     elif choice==7:
+        savaFile()
         exit()
