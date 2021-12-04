@@ -133,13 +133,13 @@ def qrcode_generate(update: Update, context: CallbackContext) -> int:
 
 def help_bot(update: Update, context: CallbackContext) -> int:
     text = '''
-     start/ : خوش آمدگویی
-     game/ : بازی حدس اعداد
-     age/ : سن شما
-     voice/ : ارسال ویس متن شما
-     max/ : ماکسیسمم اعداد وارد شده
-     argmax/: ایندکس بیشترین عدد
-     qrcode/ : تولید qrcode
+    /start : خوش آمدگویی
+    /game : بازی حدس اعداد
+    /age : سن شما
+    /voice : ارسال ویس متن شما
+    /max : ماکسیسمم اعداد وارد شده
+    /argmax: ایندکس بیشترین عدد
+    /qrcode : تولید qrcode
     '''
     update.message.reply_text(text)
     return MENU
