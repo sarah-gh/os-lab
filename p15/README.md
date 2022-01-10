@@ -1,0 +1,1 @@
+https://www.sololearn.com/certificates/course/en/23799482/1060/landscape/png
